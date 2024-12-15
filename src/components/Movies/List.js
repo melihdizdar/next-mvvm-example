@@ -1,13 +1,13 @@
 import React from "react";
 
 const List = (props) => {
-    console.log(props.data?.results)
+    const data = props.data?.results;
     return (
         <div>
             <h1>Movies List</h1>
             <div>
-                {props.data?.results.map((item) => (
-                    <div>
+                {data.map((item,index) => (
+                    <div key={index}>
                         <h2>{item?.title}</h2>
                     </div>
                 ))}

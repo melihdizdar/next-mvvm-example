@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function Blogs() {
+export default function BlogsPage() {
     return (
         <div>
             <h1>Blogs</h1>

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-const BlogDetail = () => {
+const BlogDetailPage = () => {
     const router = useRouter();
     const { id } = router.query;
 
@@ -9,4 +9,4 @@ const BlogDetail = () => {
     );
 };
 
-export default BlogDetail;
+export default BlogDetailPage;
