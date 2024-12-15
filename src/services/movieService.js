@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const fetchMoviesData = async () => {
+export const fetchMoviesData = async (term) => {
     const options = {
         method: 'GET',
-        url: 'https://imdb-top-100-movies.p.rapidapi.com/',
+        url: `https://moviesminidatabase.p.rapidapi.com/movie/imdb_id/byTitle/${term}/`,
         headers: {
             'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-            'x-rapidapi-host': 'imdb-top-100-movies.p.rapidapi.com'
+            'x-rapidapi-host': 'moviesminidatabase.p.rapidapi.com'
         }
     };
 

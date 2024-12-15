@@ -1,7 +1,7 @@
-export const composeProviders = (providers) => ({ children }) =>
-    providers.reduce(
-    (AccumulatedProviders, CurrentProvider) => (
-        <CurrentProvider>{AccumulatedProviders}</CurrentProvider>
-    ),
-    children
-);
+export const composeProviders = (providersWithProps) => ({ children }) =>
+    providersWithProps.reduceRight(
+        (acc, { Provider, props = {} }) => (
+            <Provider {...props}>{acc}</Provider>
+        ),
+        children
+    );

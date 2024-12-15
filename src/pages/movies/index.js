@@ -1,22 +1,26 @@
-"use client"
+"use client";
+
+import SearchBar from '@/src/components/Common/SearchBar';
 import List from '@/src/components/Movies/List';
 import { MoviesProvider, useMovies } from '@/src/contexts/MoviesContext';
 import { composeProviders } from '@/src/utility/composeProviders';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function MoviesPage() {
-    const AppProviders = composeProviders([
-        MoviesProvider,
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const Providers = composeProviders([
+        { Provider: MoviesProvider, props: { term: searchTerm } },
     ]);
 
     return (
-        <AppProviders>
-            <MoviesListPageContent />
-        </AppProviders>
+        <Providers>
+            <MoviesListPageContent setSearchTerm={setSearchTerm} />
+        </Providers>
     );
 }
 
-function MoviesListPageContent() {
+function MoviesListPageContent({ setSearchTerm }) {
     const { loading, error, moviesData } = useMovies();
 
     if (loading) {
@@ -27,10 +31,10 @@ function MoviesListPageContent() {
         return <div>error movies data...</div>;
     }
 
-
     return (
         <>
-            <List data={moviesData} />
+            <SearchBar onSearch={(term) => setSearchTerm(term)} />
+            {moviesData && <List data={moviesData} />}
         </>
     );
 }
